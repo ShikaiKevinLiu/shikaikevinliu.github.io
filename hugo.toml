@@ -1,5 +1,5 @@
 baseURL = 'https://shikaikevinliu.github.io/'
 languageCode = 'en-us'
 title = "Shikai Website"
-theme = 'hugo-book'
+theme = 'blowfish'
 tableOfContents = true
