@@ -1,5 +1,5 @@
 baseURL = 'https://shikaikevinliu.github.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = 'ananke'
+title = "Shikai Website"
+theme = 'hugo-book'
 tableOfContents = true
