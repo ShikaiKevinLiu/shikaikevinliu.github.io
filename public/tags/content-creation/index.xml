@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Content Creation on mypage</title>
+    <link>http://localhost:52501/tags/content-creation/</link>
+    <description>Recent content in Content Creation on mypage</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2024 Shikai Liu</copyright>
+    <lastBuildDate>Fri, 12 Aug 2022 13:04:43 +0800</lastBuildDate><atom:link href="http://localhost:52501/tags/content-creation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Meta Programming</title>
+      <link>http://localhost:52501/posts/meta_programming/</link>
+      <pubDate>Fri, 12 Aug 2022 13:04:43 +0800</pubDate>
+      
+      <guid>http://localhost:52501/posts/meta_programming/</guid>
+      <description>What do we mean by “meta programming”?</description>
+      
+    </item>
+    
+    <item>
+      <title>Mng</title>
+      <link>http://localhost:52501/posts/mlops/</link>
+      <pubDate>Fri, 12 Aug 2022 13:04:43 +0800</pubDate>
+      
+      <guid>http://localhost:52501/posts/mlops/</guid>
+      <description>What do we mean by “meta programming”?</description>
+      
+    </item>
+    
+    <item>
+      <title>Version Control</title>
+      <link>http://localhost:52501/posts/version_controlgit/</link>
+      <pubDate>Fri, 12 Aug 2022 13:04:43 +0800</pubDate>
+      
+      <guid>http://localhost:52501/posts/version_controlgit/</guid>
+      <description>A brief Introduction to Version Control</description>
+      
+    </item>
+    
+  </channel>
+</rss>

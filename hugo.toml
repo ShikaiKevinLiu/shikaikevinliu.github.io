@@ -1,5 +1,0 @@
-baseURL = 'https://shikaikevinliu.github.io/'
-languageCode = 'en-us'
-title = "Shikai Liu's Website"
-theme = 'blowfish'
-tableOfContents = true
