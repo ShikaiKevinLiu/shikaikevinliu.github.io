@@ -1,6 +1,6 @@
 ---
 title: "Version Control"
-date: 2022-08-12T13:04:43+08:00
+date: 2024-02-12
 tags: ["content creation"]
 summary: "A brief Introduction to Version Control"
 ---

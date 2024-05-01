@@ -1,10 +1,10 @@
 ---
 title: "Debugging and Profiling"
-date: 2022-08-12T13:04:43+08:00
+date: 
 tags: ["engineering"]
 description: ""
 
-slug: create-for-whom
+slug:
 ---
 
 A golden rule in programming is that:
