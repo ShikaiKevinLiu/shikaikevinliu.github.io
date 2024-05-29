@@ -1,15 +1,14 @@
 ---
-title: 数据库基础知识总结
+title: Database Fundamentals
 date: 2024-04-04
 
 category: 数据库
 tag:
   - 数据库基础
+series: ["Databse and SQL"]
+series_order: 1
+
 ---
-
-
-数据库知识基础，这部分内容一定要理解记忆。虽然这部分内容只是理论知识，但是非常重要，这是后面学习 MySQL 数据库的基础。PS: 这部分内容由于涉及太多概念性内容，所以参考了维基百科和百度百科相应的介绍。
-
 Database fundamental knowledge must be understood and memorized. Although this part is just theoretical knowledge, it is very important as it lays the foundation for later learning MySQL databases. PS: This part involves many conceptual contents, so it refers to Wikipedia and Baidu Baike for the introductions.
 
 ## Databse, Database Management System, Database System, Database Administrator
@@ -97,25 +96,28 @@ Primary Key (PK): The primary key is used to uniquely identify a tuple in a tabl
 
 Foreign Key (FK): The foreign key is used to establish a relationship with another table. A foreign key is to link to the primary key of another table, can be duplicated, and can be null. A table can have multiple foreign keys.
 
-## 为什么不推荐使用外键与级联？
+## Difference between drop, delete,  truncate？
 
-对于外键和级联，阿里巴巴开发手册这样说到：
+- `drop`: directly drop the whole table
+- `truncate` : empty the data in the table, but not delete the table itself
+- `delete` : delete is similar to `truncate`, but delete can be combined with `where` clause.
 
-> 【强制】不得使用外键与级联，一切外键概念必须在应用层解决。
->
-> 说明: 以学生和成绩的关系为例，学生表中的 student_id 是主键，那么成绩表中的 student_id 则为外键。如果更新学生表中的 student_id，同时触发成绩表中的 student_id 更新，即为级联更新。外键与级联更新适用于单机低并发，不适合分布式、高并发集群；级联更新是强阻塞，存在数据库更新风暴的风险；外键影响数据库的插入速度
+### Different Database Language Commands
 
-为什么不要用外键呢？大部分人可能会这样回答：
+TRUNCATE and DROP are DDL (Data Definition Language) statements. Their operations take effect immediately, are not placed into the rollback segment, and cannot be rolled back. These operations do not trigger triggers. In contrast, the DELETE statement is a DML (Data Manipulation Language) statement, which places the operation into the rollback segment and only takes effect after the transaction is committed.
 
-1. **增加了复杂性：** a. 每次做 DELETE 或者 UPDATE 都必须考虑外键约束，会导致开发的时候很痛苦, 测试数据极为不方便; b. 外键的主从关系是定的，假如那天需求有变化，数据库中的这个字段根本不需要和其他表有关联的话就会增加很多麻烦。
-2. **增加了额外工作**：数据库需要增加维护外键的工作，比如当我们做一些涉及外键字段的增，删，更新操作之后，需要触发相关操作去检查，保证数据的的一致性和正确性，这样会不得不消耗资源；（个人觉得这个不是不用外键的原因，因为即使你不使用外键，你在应用层面也还是要保证的。所以，我觉得这个影响可以忽略不计。）
-3. **对分库分表不友好**：因为分库分表下外键是无法生效的。
-4. ……
+Differences Between DML and DDL Statements:
 
-我个人觉得上面这种回答不是特别的全面，只是说了外键存在的一个常见的问题。实际上，我们知道外键也是有很多好处的，比如：
+DML refers to operations on the records in database tables. This mainly includes inserting, updating, deleting, and querying table records. It is the most frequently used operation by developers in daily work.
 
-1. 保证了数据库数据的一致性和完整性；
-2. 级联操作方便，减轻了程序代码量；
-3. ……
+DDL refers to the language used to create, delete, and modify database objects. 
 
-所以说，不要一股脑的就抛弃了外键这个概念，既然它存在就有它存在的道理，如果系统不涉及分库分表，并发量不是很高的情况还是可以考虑使用外键的。
+The main difference between DDL and DML is that DML only operates on the data within tables and does not involve modifying the table definitions, structures, or other objects. DDL statements are more commonly used by database administrators (DBAs) and are rarely used by regular developers.
+Additionally, since SELECT does not alter the table, it is sometimes categorized separately as DQL (Data Query Language).
+
+Execution Speed Differences
+Generally speaking: DROP > TRUNCATE > DELETE.
+
+The DELETE command generates database binlog logs during execution, which takes time. However, this also has the benefit of facilitating data rollback and recovery.
+The TRUNCATE command does not generate database logs, making it faster than DELETE. Additionally, it resets the table's auto-increment value and restores indexes to their initial size.
+The DROP command releases all space occupied by the table.
